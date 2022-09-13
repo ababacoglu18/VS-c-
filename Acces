@@ -1,0 +1,54 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Control : MonoBehaviour
+{
+    private void OnCollisionEnter(Collision collision) //Begin overlap  eğer temas eden 2 objeden birinde
+    {                                                   //rigid body component yoksa calismaz.
+        print(collision.gameObject.name );                //Is Trigger t/f collisionu kaldirir.
+
+
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        print(other.gameObject.name);
+    }
+
+    private float timer;
+    private void Update()
+    {
+        //  print( Input.GetMouseButton(0)); //0 sol tık 1 sağ tık 2 ise maus scrollx"
+        if (Input.GetKey(KeyCode.Space))
+        {
+
+            GetComponent<Light>().intensity = 100f;
+
+        }
+        else
+        {
+            GetComponent<Light>().intensity = 1f;
+
+        }    //***************************************************\\
+
+
+        print(Input.GetAxis("Horizontal"));
+
+
+
+        timer += 1 * Time.deltaTime;
+        print(timer);
+
+
+    }
+
+    private void Start()
+    { }
+}
+      /*  for (int i = 0; i < 2; i++)
+        {
+            GameObject.FindGameObjectsWithTag("ozel")[i].SetActive(false);
+        }
+        GameObject.Find("Cube"); // isim üzerinden ulasma
+
+            }*/
