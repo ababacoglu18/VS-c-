@@ -1,0 +1,36 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TraceLine : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Debug.DrawRay(transform.position, Vector3.forward, Color.white);
+        Debug.DrawRay(transform.position, transform.forward, Color.red);
+
+        //Kapi yapip cisim merkezini degistirmek icin bos game object olusturup kapiyi icine at.
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity ))
+            //out hit traceline'in carptigi objenin referans bilgisini hit degiskeninin icine atar. GetObjectReferance.
+        {
+            print(hit.collider.gameObject.name);
+        }
+
+        if (Physics.CheckSphere(transform.position, 1f)) //CheckBox, CheckCapsule, OverlapBox
+        {
+            print("OK");                                //Raycast'te çarptığı objenin referansini alir fakat Check** turevlerinde bu 
+                                                         //Ozellik yok. 
+        }
+
+
+    }
+}
