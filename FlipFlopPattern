@@ -10,6 +10,7 @@ public class FlashLight : MonoBehaviour
 
     private void Start() //flip flop pattern    
     {
+         print(GetComponent<BoxCollider>().bounds.min.x); //Bounds min hesabi
         is_on = true;
     }
     private void Update()
